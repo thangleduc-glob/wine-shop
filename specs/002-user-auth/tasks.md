@@ -15,8 +15,8 @@
 
 ## Phase 2: Foundational (Blocking Prerequisites)
 
-- [ ] T007 [P] Add Playwright E2E scaffold (playwright.config.ts and tests/e2e/)
-- [ ] T008 Configure Supabase Auth project settings and document steps in docs/supabase-setup.md (disable email verification)
+- [x] T007 [P] Add Playwright E2E scaffold (playwright.config.ts and tests/e2e/)
+- [x] T008 Configure Supabase Auth project settings and document steps in docs/supabase-setup.md (disable email verification)
 
 ---
 
@@ -48,8 +48,8 @@
 
 ## Phase 5: Polish & Cross-Cutting Concerns
 
-- [ ] T017 [P] Update specs/002-user-auth/quickstart.md with any implementation notes and validation commands
-- [ ] T018 [P] Add E2E test run script to package.json (e.g., "test:e2e": "playwright test")
+- [x] T017 [P] Update specs/002-user-auth/quickstart.md with any implementation notes and validation commands
+- [x] T018 [P] Add E2E test run script to package.json (e.g., "test:e2e": "playwright test")
 
 ---
 

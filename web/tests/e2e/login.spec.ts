@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test'
 
 test('login navigates to products on success (or shows an error)', async ({ page }) => {
-  const email = 'thang@gmmail.com'
+  const email = 'thang@gmail.com'
   const password = 'Thang123'
 
   await page.goto('/login')
