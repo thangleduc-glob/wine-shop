@@ -4,7 +4,8 @@ export default defineConfig({
   testDir: './tests/e2e',
   timeout: 30_000,
   use: {
-    baseURL: process.env.PLAYWRIGHT_BASE_URL || 'http://localhost:5174',
+    // Vite default dev server port is 5173; allow override with PLAYWRIGHT_BASE_URL
+    baseURL: process.env.PLAYWRIGHT_BASE_URL || 'http://localhost:5173',
     headless: true,
     viewport: { width: 1280, height: 720 }
   }

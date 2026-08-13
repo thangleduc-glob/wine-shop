@@ -14,6 +14,11 @@ export default function LandingPage() {
         ctaLabel={data.hero_cta_label}
         ctaTarget={data.cta_target}
       />
+      {/* <nav aria-label="primary-actions" style={{ marginTop: 16 }}>
+        <a href="/login" style={{ marginRight: 12 }}>Log in</a>
+        <a href="/signup">Sign up</a>
+        <a href="/products" style={{ marginLeft: 24 }}>View products</a>
+      </nav> */}
       <section id="shop-placeholder">
         <p>Featured products and shop preview will be here in later iterations.</p>
       </section>

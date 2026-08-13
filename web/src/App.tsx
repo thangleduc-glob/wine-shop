@@ -1,20 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
 import './App.css'
 
 import LandingPage from './pages/LandingPage'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import AuthPage from './pages/AuthPage'
+import ProductsPage from './pages/ProductsPage'
+
+import { Routes, Route, useLocation } from 'react-router-dom'
 
 function App() {
+  const location = useLocation()
+  const hideChrome = location.pathname === '/login' || location.pathname === '/signup'
+
   return (
-    <>
-      <Header />
-      <LandingPage />
-      <Footer />
-    </>
+    <div className="app-root">
+      {!hideChrome && <Header />}
+
+      <main className="app-main">
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/login" element={<AuthPage initialMode="login" />} />
+          <Route path="/signup" element={<AuthPage initialMode="signup" />} />
+          <Route path="/products" element={<ProductsPage />} />
+        </Routes>
+      </main>
+
+      {!hideChrome && <Footer />}
+    </div>
   )
 }
 
