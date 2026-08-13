@@ -4,12 +4,12 @@
 
 ## Phase 1: Setup (Shared Infrastructure)
 
-- [ ] T001 Create .env.example entries for Supabase keys (.env.example)
-- [ ] T002 [P] Add Supabase client wrapper in src/lib/supabaseClient.ts
-- [ ] T003 [P] Add auth page placeholder in src/pages/auth.tsx
-- [ ] T004 [P] Add products page placeholder in src/pages/products.tsx
-- [ ] T005 [P] Add shared AuthForm component in src/components/AuthForm.tsx
-- [ ] T006 [P] Add landing page link updates in src/pages/index.tsx (add "Log in" and "Sign up" controls)
+- [x] T001 Create .env.example entries for Supabase keys (.env.example)
+- [x] T002 [P] Add Supabase client wrapper in src/lib/supabaseClient.ts
+- [x] T003 [P] Add auth page placeholder in src/pages/auth.tsx
+- [x] T004 [P] Add products page placeholder in src/pages/products.tsx
+- [x] T005 [P] Add shared AuthForm component in src/components/AuthForm.tsx
+- [x] T006 [P] Add landing page link updates in src/pages/index.tsx (add "Log in" and "Sign up" controls)
 
 ---
 
