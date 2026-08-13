@@ -46,13 +46,6 @@
 
 ---
 
-## Phase 5: Polish & Cross-Cutting Concerns
-
-- [x] T017 [P] Update specs/002-user-auth/quickstart.md with any implementation notes and validation commands
-- [x] T018 [P] Add E2E test run script to package.json (e.g., "test:e2e": "playwright test")
-
----
-
 ## Dependencies & Execution Order
 
 - Setup (Phase 1) tasks can start immediately; many are parallelizable (marked [P]).

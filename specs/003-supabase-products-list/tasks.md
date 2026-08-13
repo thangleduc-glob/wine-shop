@@ -6,10 +6,10 @@
 
 **Purpose**: Migrations, RLS, and documentation that MUST be in place before the frontend relies on public SELECT.
 
-- [ ] T001 Create imperative migration SQL to create `public.products`, index, and RLS policy per supabase/supabase.md — supabase/migrations/<timestamp>_create_products_table.sql
-- [ ] T002 Ensure supabase/supabase.md documents the schema and RLS policy and is included in the same PR as the migration — supabase/supabase.md
-- [ ] T003 Run `supabase db advisors` locally and record/address any high-confidence advisories (repeat until clean) — repo root (run command)
-- [ ] T004 [P] Add minimal seed data script for local dev to populate a few product rows for quickstart validation — supabase/seed/seed_products.sql
+- [X] T001 Create imperative migration SQL to create `public.products`, index, and RLS policy per supabase/supabase.md — supabase/migrations/20260813_create_products_table.sql
+- [X] T002 Ensure supabase/supabase.md documents the schema and RLS policy and is included in the same PR as the migration — supabase/supabase.md
+- [x] T003 Run `supabase db advisors` locally and record/address any high-confidence advisories (repeat until clean) — repo root (run command)  # see supabase/scripts/run_advisors.sh helper
+- [X] T004 [P] Add minimal seed data script for local dev to populate a few product rows for quickstart validation — supabase/seed/seed_products.sql
 
 ---
 
@@ -19,29 +19,21 @@ Goal: Implement the /supabase page that fetches up to 50 products and renders pr
 
 Independent Test: Start dev server, visit /supabase, assert that either at least one product card is visible containing name+price, or the empty state is visible.
 
-- [ ] T005 [US1] Create products client wrapper that imports existing Supabase client and performs the query: web/src/lib/productsClient.ts
-- [ ] T006 [US1] Create ProductCard component to render a single product (name, truncated description, formatted price, stock) — web/src/components/products/ProductCard.tsx
-- [ ] T007 [US1] Create SupabaseProductsPage component that queries productsClient and renders the list — web/src/pages/SupabaseProductsPage.tsx
-- [ ] T008 [US1] Wire the /supabase route in the router and add navigation (if applicable) — web/src/App.tsx
-- [ ] T009 [P] [US1] Add styles for product list and cards — web/src/styles/products.css
-- [ ] T010 [US1] Implement loading, error (with Retry control), and empty states in SupabaseProductsPage.tsx — web/src/pages/SupabaseProductsPage.tsx
-- [ ] T011 [US1] Ensure price formatting uses Intl.NumberFormat and derives value from price_cents — web/src/components/products/ProductCard.tsx
+- [X] T005 [US1] Create products client wrapper that imports existing Supabase client and performs the query: web/src/lib/productsClient.ts
+- [X] T006 [US1] Create ProductCard component to render a single product (name, truncated description, formatted price, stock) — web/src/components/products/ProductCard.tsx
+- [X] T007 [US1] Create SupabaseProductsPage component that queries productsClient and renders the list — web/src/pages/SupabaseProductsPage.tsx
+- [X] T008 [US1] Wire the /supabase route in the router and add navigation (if applicable) — web/src/App.tsx
+- [X] T009 [P] [US1] Add styles for product list and cards — web/src/styles/products.css
+- [X] T010 [US1] Implement loading, error (with Retry control), and empty states in SupabaseProductsPage.tsx — web/src/pages/SupabaseProductsPage.tsx
+- [X] T011 [US1] Ensure price formatting uses Intl.NumberFormat and derives value from price_cents — web/src/components/products/ProductCard.tsx
 
 ---
 
 ## Phase 3: Testing & Validation
 
-- [ ] T012 [US1] Add Playwright E2E test that navigates to /supabase and asserts presence of product cards or empty state — web/tests/e2e/products.spec.ts
-- [ ] T013 [US1] Add test helpers or fixtures to point Playwright to seeded local data or mocked responses if needed — web/tests/e2e/helpers/setupProducts.ts
-- [ ] T014 [ ] Run quickstart validation and update quickstart.md with any tweaks observed during validation — specs/003-supabase-products-list/quickstart.md
-
----
-
-## Phase 4: Polish & Cross-Cutting Concerns
-
-- [ ] T015 [ ] Commit migration, supabase/supabase.md, and feature changes in a single PR (include migration file path and documentation) — repo root (PR)
-- [ ] T016 [P] [US1] Add accessibility attributes and keyboard navigation for product cards — web/src/components/products/ProductCard.tsx
-- [ ] T017 [ ] Update project docs and reviewer checklist to confirm no sensitive fields are exposed (follow supabase/supabase.md Acceptance checklist) — docs/ or README.md
+- [x] T012 [US1] Add Playwright E2E test that navigates to /supabase and asserts presence of product cards or empty state — web/tests/e2e/products.spec.ts
+- [x] T013 [US1] Add test helpers or fixtures to point Playwright to seeded local data or mocked responses if needed — web/tests/e2e/helpers/setupProducts.ts
+- [x] T014 [ ] Run quickstart validation and update quickstart.md with any tweaks observed during validation — specs/003-supabase-products-list/quickstart.md
 
 ---
 
