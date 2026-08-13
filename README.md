@@ -12,6 +12,9 @@ This repository is a demo project built to demonstrate spec-driven development u
 - Frontend pages and components in `web/src/` (product UI, ProductCard, SupabaseProductsPage).
 - Playwright E2E test for the products page: `web/tests/e2e/products.spec.ts`.
 
+Live demo
+- https://wine-shop-woad.vercel.app/ (public demo URL)
+
 ## Key themes demonstrated
 - Interaction — Structured iterative AI collaboration
   - Work was driven by speckit specs, clarify/plan/tasks/implement cycles. Each change was proposed, reviewed, and refined across small, verifiable commits and tasks.
