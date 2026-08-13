@@ -40,9 +40,9 @@
 
 **Independent Test**: Using E2E, login with an existing account and observe redirect to /products.
 
-- [ ] T014 [US2] Implement login flow in src/pages/auth.tsx (reuse AuthForm, call supabase.auth.signInWithPassword)
-- [ ] T015 [US2] Add Playwright E2E test for login in tests/e2e/login.spec.ts
-- [ ] T016 [US2] Display inline, human-readable error messages for invalid credentials in src/pages/auth.tsx
+- [x] T014 [US2] Implement login flow in src/pages/auth.tsx (reuse AuthForm, call supabase.auth.signInWithPassword)
+- [x] T015 [US2] Add Playwright E2E test for login in tests/e2e/login.spec.ts
+- [x] T016 [US2] Display inline, human-readable error messages for invalid credentials in src/pages/auth.tsx
 
 ---
 
