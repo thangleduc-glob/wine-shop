@@ -489,6 +489,8 @@
 .auth-switch a { color: var(--accent); font-weight: 700; margin-left: 6px; text-decoration: none; }
 .auth-switch a:hover { text-decoration: underline; }
 
+.user-email { margin-right: 10px; font-weight: 700; color: var(--text-h); }
+
 @media (max-width: 760px) {
   .auth-hero h1 { font-size: 28px; text-align: center; }
   .auth-hero-inner { text-align: center; }
