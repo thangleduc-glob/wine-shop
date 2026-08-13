@@ -26,11 +26,11 @@
 
 **Independent Test**: Using E2E, signup with a valid email/password and observe redirect to /products (empty state).
 
-- [ ] T009 [US1] Implement signup UI wiring in src/pages/auth.tsx (use AuthForm)
-- [ ] T010 [P] [US1] Implement client-side password validation in src/components/AuthForm.tsx (min 8 chars, letter+number)
-- [ ] T011 [US1] Add signup handler using Supabase client in src/pages/auth.tsx (call supabase.auth.signUp)
-- [ ] T012 [US1] Redirect to /products after successful signup in src/pages/auth.tsx
-- [ ] T013 [US1] Add Playwright E2E test for signup in tests/e2e/signup.spec.ts
+- [x] T009 [US1] Implement signup UI wiring in src/pages/auth.tsx (use AuthForm)
+- [x] T010 [P] [US1] Implement client-side password validation in src/components/AuthForm.tsx (min 8 chars, letter+number)
+- [x] T011 [US1] Add signup handler using Supabase client in src/pages/auth.tsx (call supabase.auth.signUp)
+- [x] T012 [US1] Redirect to /products after successful signup in src/pages/auth.tsx
+- [x] T013 [US1] Add Playwright E2E test for signup in tests/e2e/signup.spec.ts
 
 ---
 

@@ -38,17 +38,17 @@ export default function AuthForm({ mode, onSubmit }: Props) {
   }
 
   return (
-    <form onSubmit={handleSubmit} aria-label={`${mode}-form`}>
-      <div>
+    <form onSubmit={handleSubmit} aria-label={`${mode}-form`} className="auth-form">
+      <div className="field">
         <label htmlFor="email">Email</label>
         <input id="email" type="email" value={email} onChange={e => setEmail(e.target.value)} required />
       </div>
-      <div>
+      <div className="field">
         <label htmlFor="password">Password</label>
         <input id="password" type="password" value={password} onChange={e => setPassword(e.target.value)} required />
       </div>
-      {error && <div role="alert">{error}</div>}
-      <button type="submit">{mode === 'signup' ? 'Sign up' : 'Log in'}</button>
+      {error && <div role="alert" className="form-error">{error}</div>}
+      <button className="auth-submit" type="submit">{mode === 'signup' ? 'Create account' : 'Sign in'}</button>
     </form>
   )
 }
