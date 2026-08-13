@@ -1,4 +1,3 @@
-import React from 'react'
 import AuthForm from '../components/AuthForm'
 import { supabase } from '../lib/supabaseClient'
 import { useNavigate, Link } from 'react-router-dom'
@@ -11,14 +10,14 @@ export default function AuthPage({ initialMode }: Props) {
   const navigate = useNavigate()
 
   async function handleSignup(email: string, password: string) {
-    const { data, error } = await supabase.auth.signUp({ email, password })
+    const { error } = await supabase.auth.signUp({ email, password })
     if (error) throw error
     // Supabase configured to not require email verification per spec
     navigate('/products')
   }
 
   async function handleLogin(email: string, password: string) {
-    const { data, error } = await supabase.auth.signInWithPassword({ email, password })
+    const { error } = await supabase.auth.signInWithPassword({ email, password })
     if (error) throw error
     navigate('/products')
   }

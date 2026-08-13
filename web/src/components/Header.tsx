@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabaseClient'
 
@@ -17,7 +17,7 @@ export default function Header() {
       }
     })()
 
-    const { subscription } = supabase.auth.onAuthStateChange((_event, session) => {
+    const { data: {subscription} } = supabase.auth.onAuthStateChange((_event, session) => {
       setEmail(session?.user?.email ?? null)
     })
 
