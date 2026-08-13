@@ -12,11 +12,11 @@ description: "Task list for the landing page feature (re-tasked to bootstrap a b
 
 **Purpose**: Create a brand-new React + TypeScript app under `web/` using Vite (do not handcraft files).
 
-- [ ] T001 Bootstrap the app using Vite: run `npm create vite@latest web -- --template react-ts` (document exact command in `specs/001-landing-page/tasks.md`)
-- [ ] T002 [P] Install dependencies in `web/`: run `cd web && npm ci` and add Playwright as devDependency (`npm i -D @playwright/test`)
-- [ ] T003 [P] Ensure TypeScript strict mode: set `compilerOptions.strict = true` in `web/tsconfig.json` (file: `web/tsconfig.json`)
-- [ ] T004 [P] Add linting and formatting: add ESLint config `.eslintrc.cjs` and Prettier `.prettierrc` (files: repo root and `web/` as needed)
-- [ ] T005 [P] Add .gitignore entries for `web/node_modules` and Playwright artifacts (file: `.gitignore`)
+- [X] T001 Bootstrap the app using Vite: run `npm create vite@latest web -- --template react-ts` (document exact command in `specs/001-landing-page/tasks.md`)
+- [X] T002 [P] Install dependencies in `web/`: run `cd web && npm install` and add Playwright as devDependency (`npm i -D @playwright/test`)
+- [X] T003 [P] Ensure TypeScript strict mode: set `compilerOptions.strict = true` in `web/tsconfig.json` (file: `web/tsconfig.json`)
+- [X] T004 [P] Add linting and formatting: add ESLint config `.eslintrc.cjs` and Prettier `.prettierrc` (files: repo root and `web/` as needed)
+- [X] T005 [P] Add .gitignore entries for `web/node_modules` and Playwright artifacts (file: `.gitignore`)
 
 ---
 
@@ -24,11 +24,11 @@ description: "Task list for the landing page feature (re-tasked to bootstrap a b
 
 **Purpose**: Configure app runtime, mocks, health-check, and E2E test runner.
 
-- [ ] T006 Create a minimal app entry for the landing page if Vite scaffold didn't include a clean route: verify `web/src/main.tsx` and `web/src/App.tsx` (file check and minor edits allowed)
-- [ ] T007 Add frontend fixture `web/src/mocks/landing.json` with LandingContent (hero_title, hero_subtitle, hero_cta_label, cta_target)
-- [ ] T008 Add a lightweight health-check endpoint/page: `web/src/pages/HealthCheck.tsx` or `web/public/health.html` and document path `/health`
-- [ ] T009 Configure Playwright: add `playwright.config.ts` at `web/playwright.config.ts` and create `web/tests/e2e` folder
-- [ ] T010 Add npm scripts in `web/package.json`: `dev`, `build`, `start`, `test:e2e` (ensure `test:e2e` runs Playwright tests)
+- [X] T006 Create a minimal app entry for the landing page if Vite scaffold didn't include a clean route: verify `web/src/main.tsx` and `web/src/App.tsx` (file check and minor edits allowed)
+- [X] T007 Add frontend fixture `web/src/mocks/landing.json` with LandingContent (hero_title, hero_subtitle, hero_cta_label, cta_target)
+- [X] T008 Add a lightweight health-check endpoint/page: `web/public/health.html` and document path `/health`
+- [X] T009 Configure Playwright: add `playwright.config.ts` at `web/playwright.config.ts` and create `web/tests/e2e` folder
+- [X] T010 Add npm scripts in `web/package.json`: `dev`, `build`, `start`, `test:e2e` (ensure `test:e2e` runs Playwright tests)
 
 **Checkpoint**: Dev server starts and Playwright can run against it.
 
@@ -40,29 +40,29 @@ description: "Task list for the landing page feature (re-tasked to bootstrap a b
 
 **Goal**: Developers can run and test the app locally and in CI.
 
-- [ ] T011 [US3] Add `web/README.md` documenting bootstrap command, install, start, and E2E commands (include expected dev port 5173)
-- [ ] T012 [US3] Add a sample GitHub Actions job `.github/workflows/playwright.yml` that: installs, starts dev server (background), waits for `/health`, runs `npx playwright test`, and uploads artifacts on failures
-- [ ] T013 [US3] Verify dev server health in CI by adding a small wait-and-retry script or use Playwright's built-in serverStart option (document approach in `web/README.md`)
+- [X] T011 [US3] Add `web/README.md` documenting bootstrap command, install, start, and E2E commands (include expected dev port 5173)
+- [X] T012 [US3] Add a sample GitHub Actions job `.github/workflows/playwright.yml` that: installs, starts dev server (background), waits for `/health`, runs `npx playwright test`, and uploads artifacts on failures
+- [X] T013 [US3] Verify dev server health in CI by adding a small wait-and-retry script or use Playwright's built-in serverStart option (document approach in `web/README.md`)
 
 
 ### Phase 3B: US1 - View Landing Page (P1) 🎯 MVP
 
 **Goal**: Render hero and CTA at `/` using fixture data.
 
-- [ ] T014 [US1] Implement `web/src/components/Hero.tsx` (typed props) or adapt scaffold component to serve hero UI
-- [ ] T015 [US1] Implement `web/src/pages/LandingPage.tsx` that reads `web/src/mocks/landing.json` and renders `Hero`
-- [ ] T016 [US1] Ensure route `/` renders `LandingPage` (file: `web/src/App.tsx`)
-- [ ] T017 [P] [US1] Add Playwright E2E test `web/tests/e2e/landing.spec.ts` verifying hero visible and CTA navigates or anchors
-- [ ] T018 [US1] Update `specs/001-landing-page/quickstart.md` with commands to validate US1 locally and in CI (file: `specs/001-landing-page/quickstart.md`)
+- [X] T014 [US1] Implement `web/src/components/Hero.tsx` (typed props) or adapt scaffold component to serve hero UI
+- [X] T015 [US1] Implement `web/src/pages/LandingPage.tsx` that reads `web/src/mocks/landing.json` and renders `Hero`
+- [X] T016 [US1] Ensure route `/` renders `LandingPage` (file: `web/src/App.tsx`)
+- [X] T017 [P] [US1] Add Playwright E2E test `web/tests/e2e/landing.spec.ts` verifying hero visible and CTA navigates or anchors
+- [X] T018 [US1] Update `specs/001-landing-page/quickstart.md` with commands to validate US1 locally and in CI (file: `specs/001-landing-page/quickstart.md`)
 
 ### Phase 3C: US2 - Responsive & Accessible Landing (P2)
 
 **Goal**: Ensure accessibility and responsive behavior.
 
-- [ ] T019 [US2] Add responsive CSS (file: `web/src/styles/main.css` or `web/src/styles/index.css`) and include in app
-- [ ] T020 [US2] Ensure interactive elements include ARIA attributes and images have alt text (file: `web/src/components/Hero.tsx`)
-- [ ] T021 [P] [US2] Add accessibility checks in Playwright E2E (use Playwright assertions or integrate `axe-core`) in `web/tests/e2e/landing.a11y.spec.ts`
-- [ ] T022 [US2] Add mobile viewport checks in E2E tests (file: `web/tests/e2e/landing.spec.ts`)
+- [X] T019 [US2] Add responsive CSS (file: `web/src/styles/main.css` or `web/src/styles/index.css`) and include in app
+- [X] T020 [US2] Ensure interactive elements include ARIA attributes and images have alt text (file: `web/src/components/Hero.tsx`)
+- [X] T021 [P] [US2] Add accessibility checks in Playwright E2E (use Playwright assertions or integrate `axe-core`) in `web/tests/e2e/landing.a11y.spec.ts`
+- [X] T022 [US2] Add mobile viewport checks in E2E tests (file: `web/tests/e2e/landing.spec.ts`)
 
 ---
 

@@ -1,0 +1,50 @@
+name: Playwright E2E
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        working-directory: web
+        run: |
+          npm ci
+          npx playwright install --with-deps
+
+      - name: Start dev server
+        working-directory: web
+        run: |
+          npm run dev &
+          echo $! > web-dev.pid
+
+      - name: Wait for /health
+        run: web/scripts/wait-for-health.sh http://localhost:5173/health 60
+
+      - name: Run Playwright tests
+        working-directory: web
+        continue-on-error: true
+        run: npx playwright test --reporter=junit --output=test-results
+
+      - name: Upload Playwright artifacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-test-results
+          path: web/test-results
+
+      - name: Kill dev server
+        if: always()
+        run: |
+          if [ -f web/web-dev.pid ]; then kill "$(cat web/web-dev.pid)" || true; fi || true
