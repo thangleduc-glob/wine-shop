@@ -1,7 +1,7 @@
 <!--
 Sync Impact Report
-- Version change: 2.1.0 -> 2.2.0
-- Modified principles: "Testing (Quality Gates)" expanded to prescribe automated E2E remediation behavior: automated fixes allowed up to 2 attempts, then require human intervention
+- Version change: 2.2.0 -> 2.2.1
+- Modified principles: "Database Design & Migrations" updated to require supabase.md be updated when feature plans or tasks include database changes (documentation-before-implementation)
 - Added sections: none
 - Removed sections: none
 - Follow-up TODOs: RATIFICATION_DATE (TODO)
@@ -31,6 +31,7 @@ UI components MUST not contain business rules or raw SQL. Business logic belongs
   2. Generate or author versioned Supabase migrations that implement the documented state in /supabase/supabase.md.
   3. Include both the updated /supabase/supabase.md and the migration files in the same PR.
   4. Run advisors and local schema checks to ensure the migration results in the documented runtime schema.
+  5. WHENEVER a feature plan or tasks document database changes, update /supabase/supabase.md to reflect those planned changes prior to implementation; include the plan/task reference in the documentation entry.
 - NEVER rely on manual edits in the Supabase dashboard as authoritative. Direct dashboard edits are still prohibited unless accompanied by an immediate migration and documentation update in the same PR; ad-hoc dashboard changes without repo artifacts are not allowed.
 - Reviewers MUST ensure the supabase.md entry, migrations, and runtime checks are consistent before approving PRs. Discrepancies MUST be resolved in the PR discussion.
 Rationale: Making /supabase/supabase.md the documentation-first source improves reviewer clarity, accelerates audits, and centralizes the project's intended schema policy. Requiring migrations to implement the documented state preserves deployability and audit trails.
@@ -83,4 +84,4 @@ All governance changes require a documented amendment PR describing rationale, m
 Versioning policy: semantic versioning for the constitution document. BUMP rules: MAJOR for principle redefinitions, MINOR for adding principles or material expansions, PATCH for clarifications.
 Compliance: PRs touching core architecture or security features MUST include a short compliance checklist referencing relevant principles.
 
-**Version**: 2.2.0 | **Ratified**: TODO(RATIFICATION_DATE): provide adoption date | **Last Amended**: 2026-08-13
+**Version**: 2.2.1 | **Ratified**: TODO(RATIFICATION_DATE): provide adoption date | **Last Amended**: 2026-08-13
