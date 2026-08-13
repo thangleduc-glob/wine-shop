@@ -1,4 +1,7 @@
-# Wine Shop — Speckit-driven Demo
+# Wine Shop — spec driven development demo by speckit
+
+author: thang.leduc@globant.com
+
 
 This repository is a demo project built to demonstrate spec-driven development using speckit and iterative AI collaboration. It intentionally showcases decisions, trade-offs, and a repeatable workflow rather than being a production system.
 
@@ -67,6 +70,61 @@ During implementation, auth may fail in ways that block other tasks (E2E flakine
 - If using Supabase, inspect policies and ensure anon key has appropriate permissions for the demo flow.
 - Iterate: fix policy or client config, re-run seed/migrations if necessary, and rerun tests.
 - Document the fix and permanent remediation in `supabase/supabase.md` and the related task so reviewers understand context.
+
+## Step-by-step when I implemented a feature. eg Authentication
+Below is the concrete sequence followed when implementing the authentication feature, from governance to delivery. Each step lists the command(s) used and the primary files created or updated.
+
+1) Constitution (governance)
+- Action: Referenced repository constitution and governance rules to decide PR content and security gates.
+- Files/refs: `.specify/memory/constitution.md`, `specs/002-user-auth/spec.md` (notes).
+
+2) Specification
+- Action: Wrote the feature spec describing flows (signup/login), acceptance criteria, and redirects.
+- Command: `/speckit-specify` (or author spec.md manually)
+- Files: `specs/002-user-auth/spec.md`
+
+3) Clarify
+- Action: Ran targeted clarifications (email verification, session behavior) and recorded answers in the spec.
+- Command: `/speckit-clarify`
+- Files: `specs/002-user-auth/spec.md` (updated)
+
+4) Plan
+- Action: Created an implementation plan with phases (migrations → backend rules → frontend → tests).
+- Command: `/speckit-plan`
+- Files: `specs/002-user-auth/plan.md`, `specs/002-user-auth/tasks.md`
+
+5) Task breakdown
+- Action: Broke the plan into small tasks (T001..T00N) with file-level outcomes and test acceptance.
+- Command: `/speckit-tasks`
+- Files: `specs/002-user-auth/tasks.md`
+
+6) Implement — DB & infra
+- Action: Added necessary schema/policies and applied migration to the demo project.
+- Commands: created `supabase/migrations/<timestamp>_create_auth_tables.sql` then `supabase db push` or `psql -f ...`
+- Files: `supabase/migrations/*`, `supabase/supabase.md` (policy notes)
+
+7) Implement — Client & UI
+- Action: Implemented Supabase client hookup and auth UI (login/signup) and header state.
+- Commands: `/speckit-implement` to run tasks, regular git commits (git add/commit/push)
+- Files: `web/src/lib/supabaseClient.ts`, `web/src/components/AuthForm.tsx`, `web/src/pages/AuthPage.tsx`, `web/src/components/Header.tsx`
+
+8) Tests (test gate)
+- Action: Wrote Playwright E2E test that exercises signup/login and post-login redirect.
+- Command: `npx playwright test web/tests/e2e/login.spec.ts`
+- Files: `web/tests/e2e/login.spec.ts` (test), Playwright config if present
+
+9) Diagnose & fix
+- Action: If tests failed (common for auth), debugged locally (network/JWT/policy), adjusted config or policy, re-seeded DB if needed.
+- Tools: browser devtools, supabase studio, temporary test logs
+- Files updated during fixes: `supabase/supabase.md` (notes), `web/src/lib/supabaseClient.ts`, test assertions
+
+10) Acceptance & delivery
+- Action: Once Playwright tests pass and manual checks look good, tagged commits and prepared PR containing migrations + docs + code.
+- Files in PR: migrations, `supabase/supabase.md`, modified frontend files, tests, and spec/tasks for traceability.
+
+Notes
+- Every change is tied to a task ID and small commit for traceability.
+- Playwright is the acceptance gate: the feature is considered implemented when E2E tests pass and the spec's acceptance criteria are satisfied.
 
 ## Quickstart (local)
 1. Ensure you have Node and supabase configured for the demo project (or set SUPABASE_URL/SUPABASE_ANON_KEY in `web/src/lib/supabaseClient.ts`).
