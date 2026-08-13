@@ -59,6 +59,9 @@ UI MUST be responsive and usable on common mobile and desktop breakpoints. Key f
 ## Technology Constraints
 The project technology stack is: React, TypeScript, Supabase (Postgres + Auth). Libraries that duplicate core stack functionality MUST be justified in PRs. Prefers small, actively maintained dependencies.
 
+## Project Overview
+A concise project overview is maintained at ./project.md (root). This file is the canonical project overview and MUST be kept up to date to describe user flows, pages, and high-level roles. PRs that introduce or materially change features MUST update project.md to reflect those changes.
+
 ## Development Workflow
 - Branching: feature/bugfix branches named with a clear ticket reference.
 - Pull Requests: include description, testing notes, and migration effects. Reviewers MUST verify type coverage and RLS changes and confirm /supabase/supabase.md and migration files are present and consistent for DB changes.
