@@ -1,7 +1,7 @@
 <!--
 Sync Impact Report
-- Version change: 1.2.0 -> 2.0.0
-- Modified principles: "Database Design & Migrations" redefined: /supabase/supabase.md is now the project's single Source-of-Truth for intended schema and RLS policy; migrations must implement the documented state
+- Version change: 2.1.0 -> 2.2.0
+- Modified principles: "Testing (Quality Gates)" expanded to prescribe automated E2E remediation behavior: automated fixes allowed up to 2 attempts, then require human intervention
 - Added sections: none
 - Removed sections: none
 - Follow-up TODOs: RATIFICATION_DATE (TODO)
@@ -45,7 +45,18 @@ Inputs from users and external systems MUST be validated both client-side (for U
 Follow secure defaults: avoid embedding secrets in code, use environment variables, enable RLS on sensitive tables, and run dependency vulnerability scans regularly. All network access to third-party services MUST use HTTPS.
 
 ### Testing (Quality Gates)
-Automated tests MUST cover critical business flows: unit tests for logic, component tests for UI contract, and integration tests for Supabase interactions. CI MUST run tests and block merges on failures.
+For every completed feature, an end-to-end (E2E) test using Playwright MUST be added that verifies the user-visible flows the feature enables. Unit tests are optional and may be added at the developer's discretion for complex logic, but they are NOT required for merge. Component tests are encouraged where they add clear value.
+
+CI MUST run the Playwright E2E suites and block merges on failures. Test authoring guidance: keep E2E tests deterministic, fast, and focused on behavior; mock external integrations where appropriate; avoid brittle UI-only selectors and prefer data-testids or semantic selectors.
+
+Automated remediation of failing E2E tests:
+- When CI reports a Playwright E2E failure, an automated remediation agent/tool MAY attempt to fix the failure. Remediation attempts are LIMITED to two consecutive automated attempts per failing test/PR.
+- Each automated attempt MUST be conservative and auditable: it SHOULD prefer retries and flaky-test workarounds first (rerun, increase timeouts, stabilise selectors), and only propose code changes when there is high-confidence, minimal edits (e.g., replace a brittle selector with a data-testid that exists).
+- Automated attempts MUST create a draft branch or draft PR containing the proposed change, include full failing logs and a clear rationale for the change, and then re-run the E2E suite.
+- If an automated attempt results in a passing E2E run, the draft PR must NOT be merged automatically; a human reviewer MUST inspect and approve before merge.
+- After two automated attempts, if the E2E test still fails, automated remediation MUST stop and the system MUST notify the feature author and maintainers and escalate for manual investigation. No further automated attempts are allowed without explicit human instruction.
+
+Rationale: Automated remediation reduces time spent on flaky or small, repeatable failures while preserving human review for substantive changes and preventing unbounded automated edits.
 
 ### Code Quality
 Code reviews are mandatory for all production changes. Enforce linters, formatter, and commit message guidelines. Failing static checks in CI MUST block merges.
@@ -72,4 +83,4 @@ All governance changes require a documented amendment PR describing rationale, m
 Versioning policy: semantic versioning for the constitution document. BUMP rules: MAJOR for principle redefinitions, MINOR for adding principles or material expansions, PATCH for clarifications.
 Compliance: PRs touching core architecture or security features MUST include a short compliance checklist referencing relevant principles.
 
-**Version**: 2.0.0 | **Ratified**: TODO(RATIFICATION_DATE): provide adoption date | **Last Amended**: 2026-08-13
+**Version**: 2.2.0 | **Ratified**: TODO(RATIFICATION_DATE): provide adoption date | **Last Amended**: 2026-08-13
