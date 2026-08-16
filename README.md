@@ -7,7 +7,7 @@ This repository is a demo project built to demonstrate spec-driven development u
 > Important: this is a demo project used to demonstrate process and capability. It is not production-ready.
 
 ## What this demo contains
-- Email/password auth flow (Supabase-backed) and a products listing at `/supabase`.
+- Email/password auth flow (Supabase-backed) and a products listing at `/products`.
 - Supabase schema, migration and seed SQL in `supabase/` (supabase.md, migrations/, seed/). Database changes were applied to the demo Supabase project using the Supabase MCP server to run migrations and seed data.
 - Frontend pages and components in `web/src/` (product UI, ProductCard, SupabaseProductsPage).
 - Playwright E2E test for the products page: `web/tests/e2e/products.spec.ts`.
